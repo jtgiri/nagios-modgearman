@@ -1,0 +1,11 @@
+{
+    "chef_environment": "staging",
+    "name": "staging",
+    "normal": {},
+    "run_list": [
+        "recipe[build-essential]",
+        "recipe[nagios-modgearman]",
+        "role[monitoring]",
+        "recipe[nagios::server]"
+    ]
+}
