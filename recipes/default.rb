@@ -16,7 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+include_recipe "apt"
+
 users_manage "sysadmin" do
   group_id 2300
   action [ :remove, :create ]
 end
+
+include_recipe "nagios::client"
+
+%w{libnagios-plugin-perl nagios3-core nagios3-common nagios-nrpe-plugin}.each do |pkg|
+  package pkg do
+    action :install
+  end
+end
+
